@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Palacia Estate | Rent & Buy Flats - Hiranandani Estate Thane</title>
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #f4f7fc;
+      color: #1e2a3e;
+      padding: 24px 20px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Header & Hero */
+    .hero {
+      background: linear-gradient(135deg, #0b2b3f 0%, #1a4d6b 100%);
+      border-radius: 32px;
+      padding: 28px 32px;
+      margin-bottom: 32px;
+      color: white;
+      box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+
+    .hero h1 i {
+      margin-right: 12px;
+      color: #ffd966;
+    }
+
+    .hero .highlight {
+      background: rgba(255,255,240,0.2);
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-top: 12px;
+    }
+
+    .badge-loc {
+      background: #ffb347;
+      color: #1e2a3e;
+      padding: 5px 12px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      display: inline-block;
+    }
+
+    /* Add property card */
+    .form-card {
+      background: white;
+      border-radius: 28px;
+      padding: 24px 28px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      transition: 0.2s;
+      border: 1px solid #e2edf2;
+    }
+
+    .form-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #0f3b4f;
+    }
+
+    .grid-2col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .input-group label {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #2c5a74;
+    }
+
+    .input-group input, .input-group textarea {
+      padding: 12px 14px;
+      border-radius: 18px;
+      border: 1px solid #cbdde6;
+      font-size: 0.9rem;
+      transition: 0.2s;
+      background: #fff;
+    }
+
+    .input-group input:focus, .input-group textarea:focus {
+      outline: none;
+      border-color: #1f7b9e;
+      box-shadow: 0 0 0 3px rgba(31,123,158,0.2);
+    }
+
+    .image-preview-area {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+      margin-bottom: 12px;
+    }
+
+    .preview-img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid #cbdde6;
+      background: #f9f9f9;
+    }
+
+    .btn-primary {
+      background: #1f7b9e;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary:hover {
+      background: #0e5e7c;
+      transform: scale(0.98);
+    }
+
+    .btn-secondary {
+      background: #e9ecef;
+      color: #1e4660;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* property grid */
+    .properties-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .properties-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .property-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      transition: 0.25s ease;
+      border: 1px solid #e0edf2;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .property-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.08);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      background: #d9e2e8;
+    }
+
+    .card-content {
+      padding: 20px 22px 22px;
+      flex: 1;
+    }
+
+    .card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #0b3b4f;
+    }
+
+    .location {
+      color: #5885a0;
+      font-size: 0.8rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .price-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 12px 0;
+      border-top: 1px dashed #e2edf2;
+      padding-top: 12px;
+    }
+
+    .price-box {
+      background: #eff7fa;
+      border-radius: 20px;
+      padding: 6px 14px;
+    }
+
+    .price-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #2f6c8a;
+    }
+
+    .price-value {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #16445f;
+    }
+
+    .description {
+      font-size: 0.85rem;
+      color: #3b5c72;
+      margin: 12px 0 16px;
+      line-height: 1.4;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-rent {
+      background: #2c8c5a;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      flex: 1;
+      transition: 0.2s;
+    }
+
+    .btn-buy {
+      background: #d97706;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 40px;
+      font-weight: 600;
+      cursor: pointer;
+      flex: 1;
+      transition: 0.2s;
+    }
+
+    .btn-delete {
+      background: #f1f3f5;
+      color: #a03e3e;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: 0.2s;
+    }
+
+    .btn-rent:hover, .btn-buy:hover {
+      filter: brightness(0.92);
+      transform: scale(0.97);
+    }
+
+    .empty-state {
+      background: #fff3e0;
+      border-radius: 32px;
+      padding: 50px;
+      text-align: center;
+      color: #aa7a3c;
+    }
+
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      color: #6a8e9f;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 700px) {
+      body {
+        padding: 16px;
+      }
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      .form-card {
+        padding: 20px;
+      }
+    }
+    .toast-msg {
+      position: fixed;
+      bottom: 30px;
+      left: 20px;
+      right: 20px;
+      background: #1f2f38e6;
+      backdrop-filter: blur(10px);
+      color: white;
+      text-align: center;
+      padding: 14px;
+      border-radius: 60px;
+      font-weight: 500;
+      z-index: 1000;
+      transition: 0.3s;
+      max-width: 350px;
+      margin: auto;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- Hero Section with specific property mention -->
+  <div class="hero">
+    <h1><i class="fas fa-building"></i> Palacia · Hiranandani Estate</h1>
+    <div class="highlight">
+      <i class="fas fa-map-marker-alt"></i> Ghodbunder Road, Thane West
+    </div>
+    <p style="margin-top: 14px; opacity: 0.9;">✨ Featured: 1 BHK at <strong>Palacia Building</strong> | Sale ₹77 Lac | Rent also available <i class="fas fa-hand-peace"></i></p>
+    <div class="badge-loc" style="margin-top: 12px;"><i class="fas fa-tag"></i> Premium locality · Hiranandani Estate</div>
+  </div>
+
+  <!-- Form to add flat with rent, amount & image upload -->
+  <div class="form-card">
+    <div class="form-title">
+      <i class="fas fa-plus-circle" style="color:#1f7b9e"></i> 
+      Add New Flat (Rent / Sale)
+    </div>
+    <div class="grid-2col">
+      <div class="input-group">
+        <label><i class="fas fa-building"></i> Property Title *</label>
+        <input type="text" id="propTitle" placeholder="e.g., 2 BHK Premium Flat" required>
+      </div>
+      <div class="input-group">
+        <label><i class="fas fa-location-dot"></i> Location *</label>
+        <input type="text" id="propLocation" placeholder="Hiranandani Estate, Thane" required>
+      </div>
+      <div class="input-group">
+        <label><i class="fas fa-indian-rupee-sign"></i> Rent Price (Monthly) / Optional</label>
+        <input type="number" id="rentPrice" placeholder="e.g., 25000">
+      </div>
+      <div class="input-group">
+        <label><i class="fas fa-tag"></i> Sale Price (INR) *</label>
+        <input type="number" id="salePrice" placeholder="e.g., 7700000 (77 Lac)" required>
+      </div>
+      <div class="input-group full-width" style="grid-column: span 1;">
+        <label><i class="fas fa-align-left"></i> Description</label>
+        <textarea rows="2" id="propDesc" placeholder="Spacious flat, modern amenities..."></textarea>
+      </div>
+      <div class="input-group full-width" style="grid-column: span 1;">
+        <label><i class="fas fa-images"></i> Upload Images (Max 4, JPG/PNG)</label>
+        <input type="file" id="imageUpload" multiple accept="image/jpeg,image/png,image/jpg">
+        <div id="imagePreviewContainer" class="image-preview-area"></div>
+      </div>
+    </div>
+    <button id="addPropertyBtn" class="btn-primary"><i class="fas fa-cloud-upload-alt"></i> Publish Flat</button>
+  </div>
+
+  <!-- Property Listings with rent/buy options -->
+  <div class="properties-header">
+    <h2><i class="fas fa-list-ul"></i> Available Flats — Rent or Buy</h2>
+    <span id="propertyCount" style="background:#e9ecef; padding:5px 12px; border-radius: 30px;">0 listings</span>
+  </div>
+  <div id="propertiesContainer" class="properties-grid">
+    <!-- dynamic cards injected -->
+  </div>
+  <footer>
+    <i class="fas fa-hand-pointer"></i> Click "Rent" or "Buy" to contact owner • Upload images to showcase your flat
+  </footer>
+</div>
+
+<script>
+  // ----- STORAGE KEY -----
+  const STORAGE_KEY = "palacia_real_estate";
+
+  // ----- Helper: format Indian currency (Lac/Cr) -----
+  function formatPrice(amount) {
+    if (!amount && amount !== 0) return "—";
+    const num = Number(amount);
+    if (num >= 10000000) {
+      return `₹${(num / 10000000).toFixed(2)} Cr`;
+    } else if (num >= 100000) {
+      return `₹${(num / 100000).toFixed(2)} Lac`;
+    } else {
+      return `₹${num.toLocaleString('en-IN')}`;
+    }
+  }
+
+  function formatRent(amount) {
+    if (!amount && amount !== 0) return "Not set";
+    return `₹${Number(amount).toLocaleString('en-IN')} / month`;
+  }
+
+  // ----- Load properties from localStorage or seed default -----
+  function loadProperties() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      return JSON.parse(stored);
+    } else {
+      // DEFAULT PROPERTY: 1BHK Palacia Building - Sale 77 lac + Rent 25000
+      const defaultProperties = [
+        {
+          id: Date.now() + 101,
+          title: "1 BHK Flat at Palacia Building",
+          location: "Hiranandani Estate, Ghodbunder Road, Thane West",
+          rentPrice: 25000,
+          salePrice: 7700000,
+          description: "Well-designed 1 BHK, spacious living area, modern kitchen, 24/7 security, clubhouse access. Prime location in Palacia, Hiranandani Estate. Near schools & hospitals.",
+          images: ["https://placehold.co/600x400/2c5a74/white?text=Palacia+1BHK+View"],
+          createdAt: Date.now()
+        }
+      ];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultProperties));
+      return defaultProperties;
+    }
+  }
+
+  // Save to localStorage
+  function saveProperties(properties) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(properties));
+  }
+
+  // Show toast notification
+  function showToast(message, duration = 3000) {
+    let existingToast = document.querySelector('.toast-msg');
+    if(existingToast) existingToast.remove();
+    const toast = document.createElement('div');
+    toast.className = 'toast-msg';
+    toast.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+      if(toast) toast.remove();
+    }, duration);
+  }
+
+  // Render all property cards
+  function renderProperties() {
+    const properties = loadProperties();
+    const container = document.getElementById('propertiesContainer');
+    const countSpan = document.getElementById('propertyCount');
+    if (!container) return;
+
+    if (properties.length === 0) {
+      container.innerHTML = `<div class="empty-state"><i class="fas fa-home" style="font-size: 48px; opacity:0.5;"></i><h3>No properties yet</h3><p>Use the form above to add your flat for rent or sale.</p></div>`;
+      countSpan.innerText = `0 listings`;
+      return;
+    }
+
+    countSpan.innerText = `${properties.length} listing${properties.length !== 1 ? 's' : ''}`;
+    container.innerHTML = properties.map(prop => {
+      // take first image (or fallback)
+      const mainImage = (prop.images && prop.images.length > 0) ? prop.images[0] : "https://placehold.co/600x400/e0e7ed/2c3e50?text=No+Image";
+      const rentDisplay = prop.rentPrice ? formatRent(prop.rentPrice) : "Not for rent";
+      const saleDisplay = prop.salePrice ? formatPrice(prop.salePrice) : "Not for sale";
+      
+      return `
+        <div class="property-card" data-id="${prop.id}">
+          <img class="card-img" src="${mainImage}" alt="${prop.title}" onerror="this.src='https://placehold.co/600x400/e0e7ed/2c3e50?text=Image+Error'">
+          <div class="card-content">
+            <div class="card-title">${escapeHtml(prop.title)}</div>
+            <div class="location"><i class="fas fa-map-pin"></i> ${escapeHtml(prop.location)}</div>
+            <div class="price-row">
+              <div class="price-box"><span class="price-label"><i class="fas fa-calendar-alt"></i> RENT</span><div class="price-value">${rentDisplay}</div></div>
+              <div class="price-box"><span class="price-label"><i class="fas fa-chart-line"></i> SALE</span><div class="price-value">${saleDisplay}</div></div>
+            </div>
+            <div class="description">${escapeHtml(prop.description).substring(0, 100)}${prop.description.length > 100 ? '...' : ''}</div>
+            <div class="action-buttons">
+              <button class="btn-rent" data-id="${prop.id}" data-action="rent"><i class="fas fa-handshake"></i> Rent Now</button>
+              <button class="btn-buy" data-id="${prop.id}" data-action="buy"><i class="fas fa-rupee-sign"></i> Buy Now</button>
+              <button class="btn-delete" data-id="${prop.id}" data-action="delete"><i class="fas fa-trash-alt"></i> Delete</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Attach event listeners to dynamic buttons
+    document.querySelectorAll('.btn-rent').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const propId = parseInt(btn.getAttribute('data-id'));
+        handleInterest(propId, 'rent');
+      });
+    });
+    document.querySelectorAll('.btn-buy').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const propId = parseInt(btn.getAttribute('data-id'));
+        handleInterest(propId, 'buy');
+      });
+    });
+    document.querySelectorAll('.btn-delete').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const propId = parseInt(btn.getAttribute('data-id'));
+        deleteProperty(propId);
+      });
+    });
+  }
+
+  // Handle rent/buy interest
+  function handleInterest(propertyId, type) {
+    const properties = loadProperties();
+    const property = properties.find(p => p.id === propertyId);
+    if (!property) {
+      showToast("Property not found", 1500);
+      return;
+    }
+    const actionText = type === 'rent' ? 'RENT this property' : 'BUY this property';
+    const priceInfo = type === 'rent' ? (property.rentPrice ? formatRent(property.rentPrice) : "rent not listed") : (property.salePrice ? formatPrice(property.salePrice) : "sale price not listed");
+    showToast(`🏠 Interest for ${actionText}: "${property.title}" (${priceInfo}). Agent will contact you soon!`, 4000);
+    // optional: console log or lead simulation
+  }
+
+  // Delete property
+  function deleteProperty(id) {
+    let properties = loadProperties();
+    const newProps = properties.filter(p => p.id !== id);
+    if (newProps.length === properties.length) return;
+    saveProperties(newProps);
+    renderProperties();
+    showToast("✅ Property removed successfully", 1800);
+  }
+
+  // Helper to escape HTML
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+      return c;
+    });
+  }
+
+  // Convert image files to base64 array
+  async function filesToBase64(fileList) {
+    const files = Array.from(fileList);
+    if (files.length === 0) return [];
+    // Limit to 4 images
+    const limited = files.slice(0, 4);
+    const promises = limited.map(file => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (e) => resolve(e.target.result);
+        reader.onerror = (err) => reject(err);
+        reader.readAsDataURL(file);
+      });
+    });
+    return Promise.all(promises);
+  }
+
+  // Add new property with image uploads
+  async function addNewProperty() {
+    const title = document.getElementById('propTitle').value.trim();
+    const location = document.getElementById('propLocation').value.trim();
+    let rentPriceRaw = document.getElementById('rentPrice').value.trim();
+    const salePriceRaw = document.getElementById('salePrice').value.trim();
+    const description = document.getElementById('propDesc').value.trim();
+    const imageFiles = document.getElementById('imageUpload').files;
+
+    if (!title) { showToast("Please enter property title", 1500); return; }
+    if (!location) { showToast("Please enter location", 1500); return; }
+    if (!salePriceRaw || isNaN(Number(salePriceRaw)) || Number(salePriceRaw) <= 0) {
+      showToast("Sale price is required & must be positive number (e.g., 7700000)", 2000);
+      return;
+    }
+    const salePrice = Number(salePriceRaw);
+    const rentPrice = rentPriceRaw !== "" ? Number(rentPriceRaw) : null;
+    if (rentPriceRaw !== "" && (isNaN(rentPrice) || rentPrice < 0)) {
+      showToast("Invalid rent amount", 1500);
+      return;
+    }
+
+    // Show loading effect
+    const addBtn = document.getElementById('addPropertyBtn');
+    const originalText = addBtn.innerHTML;
+    addBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Uploading...';
+    addBtn.disabled = true;
+
+    let imagesArray = [];
+    if (imageFiles.length > 0) {
+      try {
+        imagesArray = await filesToBase64(imageFiles);
+      } catch (err) {
+        console.error(err);
+        showToast("Image upload failed, try smaller images", 2000);
+        addBtn.innerHTML = originalText;
+        addBtn.disabled = false;
+        return;
+      }
+    }
+    // default image if no image uploaded
+    if (imagesArray.length === 0) {
+      imagesArray.push("https://placehold.co/600x400/d9e2e8/1f4662?text=Apartment+Preview");
+    }
+
+    const newProperty = {
+      id: Date.now(),
+      title: title,
+      location: location,
+      rentPrice: rentPrice,
+      salePrice: salePrice,
+      description: description || "Beautiful flat in prime location",
+      images: imagesArray,
+      createdAt: Date.now()
+    };
+
+    const currentProperties = loadProperties();
+    const updated = [newProperty, ...currentProperties];
+    saveProperties(updated);
+    renderProperties();
+
+    // Reset form
+    document.getElementById('propTitle').value = '';
+    document.getElementById('propLocation').value = '';
+    document.getElementById('rentPrice').value = '';
+    document.getElementById('salePrice').value = '';
+    document.getElementById('propDesc').value = '';
+    document.getElementById('imageUpload').value = '';
+    document.getElementById('imagePreviewContainer').innerHTML = '';
+    
+    addBtn.innerHTML = originalText;
+    addBtn.disabled = false;
+    showToast(`✨ "${title}" added successfully! Now visible for rent/sale`, 2500);
+  }
+
+  // Image preview on file select
+  function setupImagePreview() {
+    const fileInput = document.getElementById('imageUpload');
+    const previewContainer = document.getElementById('imagePreviewContainer');
+    if (!fileInput) return;
+    fileInput.addEventListener('change', (e) => {
+      previewContainer.innerHTML = '';
+      const files = Array.from(e.target.files);
+      const limited = files.slice(0, 4);
+      limited.forEach(file => {
+        if (file.type.startsWith('image/')) {
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            const img = document.createElement('img');
+            img.src = ev.target.result;
+            img.className = 'preview-img';
+            img.style.objectFit = 'cover';
+            previewContainer.appendChild(img);
+          };
+          reader.readAsDataURL(file);
+        } else {
+          const warn = document.createElement('span');
+          warn.innerText = '⚠️ not image';
+          warn.style.fontSize = '10px';
+          previewContainer.appendChild(warn);
+        }
+      });
+      if (files.length > 4) {
+        const note = document.createElement('small');
+        note.innerText = ` (${files.length - 4} more not shown, max 4)`;
+        note.style.fontSize = '11px';
+        previewContainer.appendChild(note);
+      }
+    });
+  }
+
+  // extra: if any empty by mistake, we render again after delete or seed reset safe
+  window.addEventListener('DOMContentLoaded', () => {
+    // initial sync: if property list is empty for some reason, restore default
+    let existing = localStorage.getItem(STORAGE_KEY);
+    if (!existing || JSON.parse(existing).length === 0) {
+      const defaultProps = [
+        {
+          id: Date.now() + 1,
+          title: "1 BHK Flat at Palacia Building",
+          location: "Hiranandani Estate, Ghodbunder Road, Thane West",
+          rentPrice: 25000,
+          salePrice: 7700000,
+          description: "Well-designed 1 BHK, spacious living area, modern kitchen, 24/7 security, clubhouse access. Prime location in Palacia, Hiranandani Estate. Near schools & hospitals.",
+          images: ["https://placehold.co/600x400/2c5a74/white?text=Palacia+1BHK+View"],
+          createdAt: Date.now()
+        }
+      ];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultProps));
+    }
+    renderProperties();
+    setupImagePreview();
+    const addBtn = document.getElementById('addPropertyBtn');
+    if (addBtn) addBtn.addEventListener('click', addNewProperty);
+  });
+</script>
+</body>
+</html>
